@@ -1,19 +1,10 @@
-import express from "express";
-import mongoose from "mongoose";
-import bodyParser from "body-parser";
-import cors from "cors";
+import connectDB from "./db/index.js";
+import { app } from "./app.js";
 
-const app = express();
-app.use(bodyParser.json());
-app.use(cors());
-
-const { MONGO_DB, PORT } = process.env;
-
-mongoose.connect(MONGO_DB, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log("DB Connected Successfully");
-    app.listen(PORT, () => {
-      console.log(`Server is Running On Port: ${PORT}`);
-    });
-  })
-  .catch(error => console.error(error));
+connectDB().then(()=>{
+    app.listen(process.env.PORT || 8001,()=>{
+       console.log(`Server is running On PORT ${process.env.PORT || 8001}`); 
+    })
+}).catch((err)=>{
+    console.log("MONGO db Connection Failed !");
+});
