@@ -1,10 +1,11 @@
-import connectDB from "./db/index.js";
-import { app } from "./app.js";
+import mongoose from "mongoose";
+import express from "express";
 
-connectDB().then(()=>{
-    app.listen(process.env.PORT || 8001,()=>{
-       console.log(`Server is running On PORT ${process.env.PORT || 8001}`); 
-    })
-}).catch((err)=>{
-    console.log("MONGO db Connection Failed !");
-});
+
+const app = express()
+
+const PORT = 8000;
+
+mongoose.connect("mongodb://127.0.0.1:27017/curd-app").then(()=> console.log("Databse connected")).catch(err => console.log(err))
+
+app.listen(PORT, ()=> console.log(`server is running on Port ${PORT}`))
