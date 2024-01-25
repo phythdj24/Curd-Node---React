@@ -17,6 +17,9 @@ const UserSchema = new mongoose.Schema({
         requried : true 
 
     },
+    username:{
+        
+    }
 
 
 }, {timestamps: true})
