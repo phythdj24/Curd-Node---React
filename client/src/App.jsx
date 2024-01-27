@@ -1,6 +1,8 @@
 import {RouterProvider, createBrowserRouter} from "react-router-dom"
 import './App.css'
 import User from "./components/getuser/user"
+import Add from "./components/adduser/Add"
+import EditUser from "./components/updateuser/EditUser"
 
 function App() {
 
@@ -12,11 +14,11 @@ function App() {
     },
     {
       path: '/add',
-      element: "useradd"
+      element: <Add />
     },
     {
-      path: '/update',
-      element: "/update"
+      path: '/edit',
+      element: <EditUser />
     },
 
   ])
